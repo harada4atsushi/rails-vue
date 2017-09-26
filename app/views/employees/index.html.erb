@@ -1,0 +1,10 @@
+<div id="employees">
+ <% @employees.each do |employee| %>
+   <!-- <h2><%#= employee.name %></h2> -->
+   <button v-on:click="setEmployeeInfo(<%= employee.id %>)"><%= employee.name %></button>
+   <%#= employee.age %><br />
+   <%#= employee.email %><br />
+ <% end %>
+</div>
+
+<%= javascript_pack_tag 'employees/index' %>
