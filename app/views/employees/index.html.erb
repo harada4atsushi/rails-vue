@@ -1,10 +1,23 @@
 <div id="employees">
- <% @employees.each do |employee| %>
-   <!-- <h2><%#= employee.name %></h2> -->
-   <button v-on:click="setEmployeeInfo(<%= employee.id %>)"><%= employee.name %></button>
-   <%#= employee.age %><br />
-   <%#= employee.email %><br />
- <% end %>
+  <div>
+    <%= form_for @employees.first, html: { "v-on:submit.prevent" => "updateEmployee(#{@employees.first.id})" } do |f| %>
+    <button type="submit">更新</button>
+    <% end %>
+  </div>
+  <table>
+    <th>名前</th>
+    <th>年齢</th>
+    <th>メールアドレス</th>
+    <th></th>
+    <% @employees.each do |employee| %>
+      <tr>
+          <td><%= employee.name %></td>
+          <td><%= employee.age %></td>
+          <td><%#= f.text_field :email %></td>
+          <td><%#= f.submit '更新' %><button type="submit">更新</button></td>
+      </tr>
+      <% end %>
+  </table>
 </div>
 
 <%= javascript_pack_tag 'employees/index' %>
