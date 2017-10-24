@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :messages
   get 'page/home'
   # root_to 'page#home'
   resources :employees, only: [:index, :show, :update]
